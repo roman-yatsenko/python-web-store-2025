@@ -1,0 +1,131 @@
+[
+    {
+        "model": "shop.category",
+        "pk": 1,
+        "fields": {
+            "name": "Фантастика та Фентезі",
+            "slug": "fantastika-ta-fentezi"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 2,
+        "fields": {
+            "name": "Науково-популярна література",
+            "slug": "naukovo-populyarna-literatura"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 3,
+        "fields": {
+            "name": "Бізнес та Саморозвиток",
+            "slug": "biznes-ta-samorozvytok"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "name": "Дюна",
+            "slug": "dyuna",
+            "image": "",
+            "description": "Класика наукової фантастики, епічна історія про пустельну планету Арракіс і боротьбу за контроль над спецією.",
+            "price": "450.00",
+            "available": true,
+            "created": "2025-11-19T17:00:00Z",
+            "updated": "2025-11-19T17:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 2,
+        "fields": {
+            "category": 1,
+            "name": "Гаррі Поттер і Філософський камінь",
+            "slug": "garri-potter-i-filosofskyi-kamin",
+            "image": "",
+            "description": "Початок магічної саги про хлопчика-чарівника Гаррі Поттера та його пригоди в Гоґвортсі.",
+            "price": "320.50",
+            "available": true,
+            "created": "2025-11-19T17:01:00Z",
+            "updated": "2025-11-19T17:01:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 3,
+        "fields": {
+            "category": 2,
+            "name": "Коротка історія часу",
+            "slug": "korotka-istoriya-chasu",
+            "image": "",
+            "description": "Популярний виклад космології, чорних дір і походження Всесвіту від Стівена Хокінга.",
+            "price": "580.99",
+            "available": true,
+            "created": "2025-11-19T17:02:00Z",
+            "updated": "2025-11-19T17:02:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 4,
+        "fields": {
+            "category": 2,
+            "name": "Sapiens: Коротка історія людства",
+            "slug": "sapiens-korotka-istoriya-lyudstva",
+            "image": "",
+            "description": "Бестселер Ювала Ноя Харарі про еволюцію, історію та майбутнє Homo Sapiens.",
+            "price": "615.00",
+            "available": true,
+            "created": "2025-11-19T17:03:00Z",
+            "updated": "2025-11-19T17:03:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 5,
+        "fields": {
+            "category": 3,
+            "name": "Атомні звички",
+            "slug": "atomni-zvychky",
+            "image": "",
+            "description": "Практичний посібник Джеймса Кліра зі створення корисних звичок і позбавлення від шкідливих.",
+            "price": "399.00",
+            "available": true,
+            "created": "2025-11-19T17:04:00Z",
+            "updated": "2025-11-19T17:04:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 6,
+        "fields": {
+            "category": 3,
+            "name": "7 звичок надзвичайно ефективних людей",
+            "slug": "7-zvychok-nadzvychajno-efektyvnykh-lyudej",
+            "image": "",
+            "description": "Культова книга Стівена Кові про принципи, що лежать в основі особистої та професійної ефективності.",
+            "price": "495.75",
+            "available": true,
+            "created": "2025-11-19T17:05:00Z",
+            "updated": "2025-11-19T17:05:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 7,
+        "fields": {
+            "category": 1,
+            "name": "Відьмак. Останнє бажання",
+            "slug": "vidmak-ostannye-bazhannya",
+            "image": "",
+            "description": "Збірка оповідань Анджея Сапковського, що представляє світові Ґеральта з Рівії – відьмака.",
+            "price": "410.00",
+            "available": false,
+            "created": "2025-11-19T17:06:00Z",
+            "updated": "2025-11-19T17:06:00Z"
+        }
+    }
+]
