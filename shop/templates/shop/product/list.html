@@ -35,10 +35,20 @@
 
     <div class="col-xs-9">
       <h4>{% if category %}{{ category.name }}{% else %}Каталог товарів{% endif %}</h4>
-      <div class="grid">
-        <article>1111111</article>
-        <article>2222222</article>
-        <article>3333333</article>
+      {% for product in products %}
+        {% if forloop.counter0|divisibleby:"3" %}
+          <div class="grid">
+        {% endif %}
+          <article>
+            <h5>
+              <a href="{{ product.get_absolute_url}}">{{ product.name }}</a>
+            </h5>
+            <footer>{{ product.price }} ₴</footer>
+          </article>
+        {% if forloop.counter|divisibleby:"3" %}
+          </div>
+        {% endif %}
+      {% endfor %}
       </div>
     </div>
 
