@@ -1,4 +1,5 @@
 {% extends "shop/base.html" %}
+{% load static %}
 
 {% block title %}
   {% if category %}
@@ -40,9 +41,19 @@
           <div class="grid">
         {% endif %}
           <article>
-            <h5>
-              <a href="{{ product.get_absolute_url}}">{{ product.name }}</a>
-            </h5>
+            <header>
+              <h6>
+                <a href="{{ product.get_absolute_url}}">{{ product.name }}</a>
+              </h6>
+            </header>
+            <a href="{{ product.get_absolute_url}}">
+              <img src="{% if product.image %}
+                          {{ product.image.url }}
+                        {% else %}
+                          {% static 'img/no_image.png' %}
+                        {% endif %}" 
+                   width="100%">
+            </a>
             <footer>{{ product.price }} ₴</footer>
           </article>
         {% if forloop.last %}

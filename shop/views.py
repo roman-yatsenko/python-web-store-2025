@@ -11,7 +11,6 @@ def product_list(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
     additional_cards = 3 - products.count() % 3
-    print(additional_cards)
     return render(request,
                   'shop/product/list.html',
                   {'category': category,
