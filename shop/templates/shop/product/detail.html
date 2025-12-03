@@ -1,5 +1,6 @@
 {% extends "shop/base.html" %}
 {% load static %}
+{% load tags %}
 
 {% block title %}
   {{ product.name}}
@@ -21,7 +22,7 @@
       <footer>{{ product.price }} ₴</footer>
     </article>
     <article>
-      {{ product.description|linebreaks }}
+      {{ product.description|markdown }}
     </article>
   </div>
 {% endblock content %}
