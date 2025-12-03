@@ -45,8 +45,14 @@
             </h5>
             <footer>{{ product.price }} ₴</footer>
           </article>
-        {% if forloop.counter|divisibleby:"3" or forloop.last %}
+        {% if forloop.last %}
+          {% if additional_cards >= 1 %}<div></div>{% endif %}
+          {% if additional_cards == 2 %}<div></div>{% endif %}
           </div>
+        {% else %}
+          {% if forloop.counter|divisibleby:"3"%}
+            </div>
+          {% endif %}
         {% endif %}
       {% endfor %}
       </div>
