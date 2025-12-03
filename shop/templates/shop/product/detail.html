@@ -1,0 +1,27 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}
+  {{ product.name}}
+{% endblock  %}
+
+{% block content %}
+  <h2>{{ product.name }}</h2>
+  <h5><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h5>
+  <div class="grid">
+    <article>
+      <a href="{{ product.get_absolute_url}}">
+        <img src="{% if product.image %}
+                    {{ product.image.url }}
+                  {% else %}
+                    {% static 'img/no_image.png' %}
+                  {% endif %}" 
+              width="100%">
+      </a>
+      <footer>{{ product.price }} ₴</footer>
+    </article>
+    <article>
+      {{ product.description|linebreaks }}
+    </article>
+  </div>
+{% endblock content %}
