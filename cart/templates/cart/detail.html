@@ -26,7 +26,16 @@
               </a>
             </td>
             <td>{{ product.name }}</td>
-            <td>{{ item.quantity }}</td>
+            <td>
+              <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                {% csrf_token %}
+                <fieldset role="group">
+                  {{ item.update_quantity_form.quantity }}
+                  {{ item.update_quantity_form.override }}
+                  <input type="submit" value="✏️" style="max-width: 35px; padding: 3px;">
+                </fieldset>
+              </form>
+            </td>
             <td>
               <form action="{% url 'cart:cart_remove' product.id %}" method="post">
                 <input type="submit" value="❌">
