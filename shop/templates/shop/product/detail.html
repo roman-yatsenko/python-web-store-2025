@@ -19,7 +19,14 @@
                   {% endif %}" 
               width="100%">
       </a>
-      <footer>{{ product.price }} ₴</footer>
+      <footer>
+        <p>{{ product.price }} ₴</p>
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+          {% csrf_token %}
+          {{ cart_product_form }}
+          <input type="submit" value="Купити">
+        </form>
+      </footer>
     </article>
     <article>
       {{ product.description|markdown }}
