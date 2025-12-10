@@ -1,0 +1,50 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}Ваш кошик{% endblock  %}
+
+{% block content %}
+  <h2>Ваш кошик</h2>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Фото</th>
+        <th scope="col">Назва</th>
+        <th scope="col">Кількість</th>
+        <th scope="col">Видалити</th>
+        <th scope="col">Ціна за 1 од.</th>
+        <th scope="col">Сума</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart %}
+        {% with product=item.product %}
+          <tr>
+            <td>
+              <a href="{{ product.get_absolute_url }}">
+                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="100">
+              </a>
+            </td>
+            <td>{{ product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>
+              <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                <input type="submit" value="Видалити">
+                {% csrf_token %}
+              </form>
+            </td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.total_price }}</td>
+          </tr>
+        {% endwith %}
+      {% endfor %}
+      <td scope="row">Разом:</td>
+      <td colspan="4"></td>
+      <td>{{ cart.get_total_price }} ₴</td>
+    </tbody>
+  </table>
+  <p align="right">
+    <a href="{% url 'shop:product_list' %}">Продовжити покупки</a>
+    <a href="#">Оформити замовлення</a>
+  </p>
+{% endblock content %}
