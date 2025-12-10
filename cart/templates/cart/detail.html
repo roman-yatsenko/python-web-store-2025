@@ -5,7 +5,7 @@
 
 {% block content %}
   <h2>Ваш кошик</h2>
-  <table>
+  <table class="striped">
     <thead>
       <tr>
         <th scope="col">Фото</th>
@@ -29,7 +29,7 @@
             <td>{{ item.quantity }}</td>
             <td>
               <form action="{% url 'cart:cart_remove' product.id %}" method="post">
-                <input type="submit" value="Видалити">
+                <input type="submit" value="❌">
                 {% csrf_token %}
               </form>
             </td>
@@ -38,13 +38,13 @@
           </tr>
         {% endwith %}
       {% endfor %}
-      <td scope="row">Разом:</td>
+      <td scope="row"><b>Разом:</b></td>
       <td colspan="4"></td>
-      <td>{{ cart.get_total_price }}&nbsp;₴</td>
+      <td><b>{{ cart.get_total_price }}&nbsp;₴</b></td>
     </tbody>
   </table>
   <p align="right">
-    <a href="{% url 'shop:product_list' %}">Продовжити покупки</a>
-    <a href="#">Оформити замовлення</a>
+    <a href="{% url 'shop:product_list' %}" role="button">Продовжити покупки</a>
+    <a href="#" role="button" >Оформити замовлення</a>
   </p>
 {% endblock content %}

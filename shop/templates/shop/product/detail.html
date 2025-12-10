@@ -23,8 +23,10 @@
         <p>{{ product.price }} ₴</p>
         <form action="{% url 'cart:cart_add' product.id %}" method="post">
           {% csrf_token %}
-          {{ cart_product_form }}
-          <input type="submit" value="Купити">
+          <fieldset class="grid">
+            {{ cart_product_form }}
+            <input type="submit" value="Купити">
+          </p>
         </form>
       </footer>
     </article>
