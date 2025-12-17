@@ -26,7 +26,25 @@
         </ul>
         <ul>
           <li><a href="{% url 'shop:product_list' %}">Каталог</a></li>
-          <li><a href="#">Профіль</a></li>
+          {% if request.user.is_authenticated %}
+            <li>
+              <details class="dropdown">
+                <summary>
+                  {{ request.user.first_name|default:request.user.username }}
+                </summary>
+                <ul dir="rtl">
+                  <li><a href="#">Профіль</a></li>
+                  {% comment %} <li><a href="#">Logout</a></li> {% endcomment %}
+                  <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Вихід">
+                  </form>
+                </ul>
+              </details>
+            </li>
+          {% else %}
+            <li><a href="{% url 'login' %}">Вхід</a></li>
+          {% endif %}
           <li><a href="{% url 'cart:cart_detail' %}">
             {% with total_items=cart|length %}
               {% if total_items > 0 %}

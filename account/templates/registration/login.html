@@ -1,0 +1,22 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Вхід на сайт{% endblock  %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>Вхід на сайт</h2>
+      {% if form.errors %}
+        <p>Помилка входу на сайт. Спробуйте ще раз.</p>
+      {% else %}
+        <p>Заповніть поля нижче для входу на сайт.</p>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}">
+        <input type="submit" value="Вхід">
+      </form>
+    </div>
+  </div>
+{% endblock  %}
