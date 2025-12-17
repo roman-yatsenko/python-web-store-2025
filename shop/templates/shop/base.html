@@ -33,8 +33,7 @@
                   {{ request.user.first_name|default:request.user.username }}
                 </summary>
                 <ul dir="rtl">
-                  <li><a href="#">Профіль</a></li>
-                  {% comment %} <li><a href="#">Logout</a></li> {% endcomment %}
+                  <li><a href="{% url 'password_change' %}">Профіль</a></li>
                   <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
                     <input type="submit" value="Вихід">
