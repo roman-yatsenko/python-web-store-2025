@@ -12,6 +12,10 @@
       rel="stylesheet" 
       href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
     >
+    <link 
+      rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" 
+    >
     <title>{% block title %}Літера{% endblock %}</title>
   </head>
   <body>
@@ -23,18 +27,23 @@
         <ul>
           <li><a href="{% url 'shop:product_list' %}">Каталог</a></li>
           <li><a href="#">Профіль</a></li>
+          <li><a href="{% url 'cart:cart_detail' %}">
+            {% with total_items=cart|length %}
+              {% if total_items > 0 %}
+                <i class="iconoir-cart"></i>
+                <span><sup>{{ total_items }}</sup></span>
+              {% endif %}
+            {% endwith %}
+          </a></li>
         </ul>
       </nav>
     </header> 
     <main class="container">
       <section class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-12">
           {% block content %}
             <article class="box">Каталог товарів</article>
           {% endblock  %}
-        </div>
-        <div class="col-lg-3">
-          <article class="box">Кошик</article>
         </div>
       </section>
     </main>
