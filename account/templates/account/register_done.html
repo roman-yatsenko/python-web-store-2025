@@ -1,0 +1,9 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Ласкаво просимо{% endblock %}
+
+{% block content %}
+  <h2>Ласкаво просимо, {{ new_user.first_name }}</h2>
+  <p>Ваш акаунт було успішно створено.</p>
+  <p>Тепер ви можете <a href="{% url 'login' %}">залогінитись.</a></p>
+{% endblock  %}

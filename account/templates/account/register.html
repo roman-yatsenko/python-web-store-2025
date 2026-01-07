@@ -1,0 +1,21 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Реєстрація{% endblock  %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>Створити нового користувача</h2>
+      {% if form.errors %}
+        <p>Помилка реєстрації. Спробуйте ще раз.</p>
+      {% else %}
+        <p>Заповніть поля нижче для реєстрації на сайті.</p>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        <input type="submit" value="Створити">
+      </form>
+    </div>
+  </div>
+{% endblock  %}

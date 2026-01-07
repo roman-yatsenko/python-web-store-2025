@@ -17,6 +17,10 @@
         <input type="hidden" name="next" value="{{ next }}">
         <input type="submit" value="Вхід">
       </form>
+      <p>
+        Якщо Ви ще не зареєстровані на сайті, то 
+        <a href="{% url "register" %}">зареєструйтеся.</a>
+      </p>
     </div>
   </div>
 {% endblock  %}

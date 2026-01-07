@@ -43,6 +43,7 @@
             </li>
           {% else %}
             <li><a href="{% url 'login' %}">Вхід</a></li>
+            <li><a href="{% url 'register' %}">Реєстрація</a></li>
           {% endif %}
           <li><a href="{% url 'cart:cart_detail' %}">
             {% with total_items=cart|length %}
