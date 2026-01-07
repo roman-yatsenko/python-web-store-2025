@@ -56,6 +56,29 @@
         </ul>
       </nav>
     </header> 
+
+    <div class="container" id="messages">
+      {% for message in messages %}
+        <dialog open id="message">
+          <article>
+            <header>
+              <button aria-label="Close" rel="prev" id="close-button"></button>
+              <p>
+                {% if message.tags == 'error' %}
+                  ❌ Помилка
+                {% else %}
+                  ✅ Успішно
+                {% endif %}
+              </p>
+            </header>
+            <p>
+              {{ message|safe }}
+            </p>
+          </article>
+        </dialog>
+      {% endfor %}
+    </div>
+
     <main class="container">
       <section class="row">
         <div class="col-lg-12">
@@ -65,8 +88,18 @@
         </div>
       </section>
     </main>
+
     <footer class="container-fluid">
       <p align="center">&copy; 2025 Літера</p>
     </footer>
+
+    <script>
+      // Cancel button closes the dialog box
+      const dialog = document.getElementById("message");
+      const cancelButton = document.getElementById("close-button");
+      cancelButton.addEventListener("click", () => {
+        dialog.close(); // Set dialog.returnValue to null
+      });
+    </script>
   </body>
 </html>
