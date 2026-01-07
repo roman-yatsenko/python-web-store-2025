@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Змінити профіль користувача{% endblock  %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>Зміна профілю</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" value="Змінити">
+      </form>
+      <p>
+        <a href="{% url "password_change" %}">Змінити пароль</a>
+      </p>
+    </div>
+  </div>
+{% endblock  %}
