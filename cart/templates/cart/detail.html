@@ -54,6 +54,6 @@
   </table>
   <p align="right">
     <a href="{% url 'shop:product_list' %}" role="button">Продовжити покупки</a>
-    <a href="#" role="button" >Оформити замовлення</a>
+    <a href="{% url 'orders:order_create' %}" role="button" >Оформити замовлення</a>
   </p>
 {% endblock content %}
