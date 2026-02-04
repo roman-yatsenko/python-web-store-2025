@@ -12,13 +12,17 @@ def product_list(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
+    if query := request.GET.get('search'):
+        products = (products.filter(name__contains=query) | 
+                    products.filter(description__contains=query))
     additional_cards = 3 - products.count() % 3
     return render(request,
                   'shop/product/list.html',
                   {'category': category,
                    'categories': categories,
                    'products': products,
-                   'additional_cards': additional_cards})
+                   'additional_cards': additional_cards,
+                   'query': query})
 
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
