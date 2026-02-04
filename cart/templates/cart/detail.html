@@ -68,13 +68,21 @@
       </tr>
     </tfoot>
   </table>
-  <form action="{% url 'coupons:apply' %}" method="post">
-    {% csrf_token %}
-    {{ coupon_apply_form.as_p }}
-    <input type="submit" value="Застосувати">
-  </form>
-  <p align="right">
-    <a href="{% url 'shop:product_list' %}" role="button">Продовжити покупки</a>
-    <a href="{% url 'orders:order_create' %}" role="button" >Оформити замовлення</a>
-  </p>
+  <div class="row">
+    <div class="col-lg-6">
+      <form action="{% url 'coupons:apply' %}" method="post">
+        {% csrf_token %}
+        {{ coupon_apply_form.as_p }}
+        <input type="submit" value="Застосувати">
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <p align="right">
+        <a href="{% url 'shop:product_list' %}" role="button">Продовжити покупки</a>
+      </p>
+      <p align="right">
+        <a href="{% url 'orders:order_create' %}" role="button">Оформити замовлення</a>
+      </p>
+    </div>
+  </div>
 {% endblock content %}
