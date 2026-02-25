@@ -2,26 +2,27 @@ from decimal import Decimal
 
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from coupons.models import Coupon
 from shop.models import Product
 
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=50, verbose_name="Ім'я")
-    last_name = models.CharField(max_length=50, verbose_name="Прізвище")
-    email = models.EmailField(verbose_name="E-mail")
-    address = models.CharField(max_length=250, verbose_name="Адреса")
-    postal_code = models.CharField(max_length=7, verbose_name="Індекс")
-    city = models.CharField(max_length=50, verbose_name="Місто")
-    created = models.DateTimeField(auto_now_add=True, verbose_name="Створено")
-    updated = models.DateTimeField(auto_now=True, verbose_name="Оновлено")
-    paid = models.BooleanField(default=False, verbose_name="Оплачено")
+    first_name = models.CharField(max_length=50, verbose_name=_("Ім'я"))
+    last_name = models.CharField(max_length=50, verbose_name=_("Прізвище"))
+    email = models.EmailField(verbose_name=_("E-mail"))
+    address = models.CharField(max_length=250, verbose_name=_("Адреса"))
+    postal_code = models.CharField(max_length=7, verbose_name=_("Індекс"))
+    city = models.CharField(max_length=50, verbose_name=_("Місто"))
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_("Створено"))
+    updated = models.DateTimeField(auto_now=True, verbose_name=_("Оновлено"))
+    paid = models.BooleanField(default=False, verbose_name=_("Оплачено"))
     coupon = models.ForeignKey(Coupon, related_name='orders', null=True, blank=True, 
-                               on_delete=models.SET_NULL, verbose_name="Купон")
+                               on_delete=models.SET_NULL, verbose_name=_("Купон"))
     discount = models.IntegerField(default=0, 
                                    validators=[MinValueValidator(0), MaxValueValidator(100)],
-                                   verbose_name="Знижка")
+                                   verbose_name=_("Знижка"))
 
     class Meta:
         ordering = ['-created']

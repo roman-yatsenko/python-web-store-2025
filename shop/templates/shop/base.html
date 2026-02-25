@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <!doctype html>
 <html lang="uk">
   <head>
@@ -58,6 +60,21 @@
               {% endif %}
             {% endwith %}
           </a></li>
+
+          {# language #}
+          {% get_current_language as LANGUAGE_CODE %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+          <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            {% for language in languages %}
+              <button 
+                {% if language.code != LANGUAGE_CODE %} class="outline" {% endif %}
+                name="language" value="{{ language.code }}">
+                {{ language.code|upper }}
+              </button>
+            {% endfor %}
+          </form>
         </ul>
       </nav>
     </header> 
